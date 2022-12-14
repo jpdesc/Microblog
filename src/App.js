@@ -22,9 +22,12 @@ export default function App()
     return (
         <>
             <h1>Microblog</h1>
-            {posts.map(post => {
+            {posts.length === 0 ?
+                <p>There are no blog posts.</p>
+                :
+            posts.map(post => {
                 return (
-                    <p>
+                    <p key={post.id}>
                         <b>
                             {post.author.username}
                         </b>
@@ -33,7 +36,9 @@ export default function App()
                         {post.text}
                     </p>
                 );
-            })}
+            })
+        }
+
         </>
     );
 }
