@@ -9,14 +9,9 @@ export default function App()
     return (
         <Container fluid className="App">
             <Header />
-            <Container>
-                <Stack direction="horizontal">
-                    <Sidebar />
-                    <Container>
-                        <Posts/>
-                    </Container>
-                </Stack>
-            </Container>
+            <Body sidebar>
+                <Posts />
+            </Body>
             </Container>
     );
 }
