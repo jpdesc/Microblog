@@ -9,6 +9,21 @@ export default function Posts() {
     const [posts, setPosts] = useState(null);
     const api = useApi();
 
+    let url;
+    switch (content) {
+        case 'feed':
+        case undefined:
+            url = '/feed';
+            break;
+        case 'explore':
+            url = '/posts';
+            break
+        default:
+            url = `/users/${content}/posts`;
+            break;
+    }
+
+
     useEffect(() => {
         (async () => {
             const response = await fetch(BASE_API_URL + '/api/feed');
@@ -21,7 +36,7 @@ export default function Posts() {
                 setPosts(null);
             }
         })();
-    }, [api]);
+    }, [api, url]);
 
     return (
         <>
