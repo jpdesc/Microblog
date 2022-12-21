@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
+import { useApi } from '../contexts/ApiProvider';
 import Post from './Post';
 
 const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
 
 export default function Posts() {
-    const [posts, setPosts] = useState();
+    const [posts, setPosts] = useState(null);
+    const api = useApi();
 
     useEffect(() => {
         (async () => {
@@ -19,7 +21,7 @@ export default function Posts() {
                 setPosts(null);
             }
         })();
-    }, []);
+    }, [api]);
 
     return (
         <>
